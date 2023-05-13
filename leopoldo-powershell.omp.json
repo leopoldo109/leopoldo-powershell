@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "#45ff95",
+          "foreground": "#011627",
+          "leading_diamond": "\ue0b2",
+          "properties": {
+            "macos": "\uf179 ",
+            "ubuntu": "\uf31b ",
+            "windows": "\ue62a "
+          },
+          "style": "diamond",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}",
+          "trailing_diamond": "<transparent,#45ff95>\ue0b2</>",
+          "type": "os"
+        },
+        {
+          "background": "#45ff95",
+          "foreground": "#011627",
+          "leading_diamond": "\ue0b2",
+          "style": "diamond",
+          "template": "\uf489 {{ .Name }}",
+          "trailing_diamond": "<transparent,#45ff95>\ue0b2</>",
+          "type": "shell"
+        },
+        {
+          "background": "#271835",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0b2",
+          "properties": {
+            "style": "roundrock",
+            "threshold": 0
+          },
+          "style": "diamond",
+          "template": "\ue266 MEM: {{ round .PhysicalPercentUsed .Precision }}% | {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB \ue266 ",
+          "trailing_diamond": "\ue0b0",
+          "type": "sysinfo"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#1a1023",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0b2",
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "fetch_worktree_count": true
+          },
+          "style": "diamond",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "trailing_diamond": "\ue0b0",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "style": "diamond",
+          "foreground": "#484848",
+          "template": "\u256d\u2500",
+          "type": "text"
+        },
+        {
+          "foreground": "#ff3e82",
+          "properties": {
+            "time_format": "<#FF3E82>\uf017</> <#FFFFFF>15:04:05</> <#FFFFFF>|</> \uf073 2 Jan, Monday"
+          },
+          "style": "plain",
+          "template": "{{ .CurrentDate | date .Format }} <#FFFFFF>|</>",
+          "type": "time"
+        },
+        {
+          "foreground": "#ff3e82",
+          "leading_diamond": "<#ff3e82> \uf07b </><#FFFFFF> in </>",
+          "properties": {
+            "folder_icon": " \uf07c ",
+            "folder_separator_icon": " \uf061 ",
+            "home_icon": "\ueb06 ",
+            "style": "agnoster_short",
+            "max_depth": 3
+          },
+          "style": "diamond",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true
+          },
+          "background": "#484848",
+          "foreground": "#292929",
+          "style": "diamond",
+          "leading_diamond": "\u2570\u2500\ue0b6",
+          "template": "🤔",
+          "trailing_diamond": "\ue0b4",
+          "type": "path"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "console_title_template": "{{ .Folder }}",
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "#FEF5ED",
+    "template": "\ue285 "
+  },
+  "version": 2
+}
